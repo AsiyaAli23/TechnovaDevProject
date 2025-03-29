@@ -18,8 +18,13 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Change to backend directory
+        run: cd backend  # Or 'frontend' if your package.json is there
+      
       - name: Install Dependencies
         run: npm install --verbose
-      
+        working-directory: backend  # Specify the correct directory
+
       - name: Run Tests
         run: npm test
+        working-directory: backend
