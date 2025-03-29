@@ -11,17 +11,20 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # ✅ Ensures repo files are available
+
+      - name: Show Directory Structure (Debugging)
+        run: ls -R  # ✅ Prints all files to check structure
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '18'  # ✅ Change if needed
 
       - name: Install Dependencies
         run: npm install --verbose
-        working-directory: backend  # ✅ Change this if needed (e.g., frontend)
+        working-directory: backend  # ✅ Ensure 'backend' folder exists
 
       - name: Run Tests
         run: npm test
-        working-directory: backend  # ✅ Runs tests in correct folder
+        working-directory: backend
